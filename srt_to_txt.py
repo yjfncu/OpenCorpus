@@ -17,7 +17,7 @@ def convert_srt_to_txt(filepath):
     """
     # Open the input file, create the output file
     input_file = open(filepath, "r")
-    output_file = open(filepath[:-3] + ".txt", "w+")
+    output_file = open(filepath[:-3] + "txt", "w+")
 
     # Common regex patters
     sequence = re.compile(r'^\d+$')
@@ -31,8 +31,9 @@ def convert_srt_to_txt(filepath):
             continue
 
         # Remove artifacts from beginning and end of the line
-        line = line.strip("'\"")
-        output_file.write(line)
+        line = line.lstrip("' \" - .")
+        line = line.rstrip("' \" - . \n")
+        output_file.write(line + '\n')
 
     # Close the files and return True
     input_file.close()
