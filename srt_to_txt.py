@@ -3,6 +3,7 @@
 # Joseph Bergman
 #
 # Get the raw text from a .srt file and write it to a .txt file
+import sys
 import re
 
 
@@ -39,3 +40,22 @@ def convert_srt_to_txt(filepath):
     input_file.close()
     output_file.close()
     return True
+
+
+if __name__ == '__main__':
+
+    if len(sys.argv) < 2:
+        print("Error: not enough arguments")
+        print("srt_to_txt.py <input_file_path>")
+        sys.exit(0)
+
+    filepath = sys.argv[1]
+    if filepath[-4:] != ".srt":
+        print("Error: input file must be a .srt file")
+        sys.exit(0)
+
+    print("Converting to .txt")
+    if convert_srt_to_txt(filepath):
+        print("Success")
+    else:
+        print("Error")
