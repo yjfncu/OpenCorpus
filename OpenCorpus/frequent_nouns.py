@@ -10,7 +10,7 @@ import re
 # Get the URL
 url = "http://frequencylists.blogspot.com.br/2015/12/the-2000-most-frequently-used-korean.html"
 r = requests.get(url)
-soup = BeautifulSoup(r.content)
+soup = BeautifulSoup(r.content, "lxml")
 
 # Select the table
 div = soup.find('div', attrs={'class': 'post-body'})
@@ -34,9 +34,8 @@ for word in words:
     frequency_list.append((number,korean,english))
 
 # Write the result to a CSV
-output_file = open("frequent_nouns.csv", "w+")
+output_file = open("sources/frequent_nouns.csv", "w+")
+output_file.write("1,사람들,people\n")
 for (num,kor,eng) in frequency_list:
     output_file.write("{},{},{}\n".format(num,kor,eng))
 output_file.close()
-
-print(frequency_list)

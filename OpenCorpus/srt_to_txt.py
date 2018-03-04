@@ -21,7 +21,7 @@ def convert_srt_to_txt(filepath, output=""):
     # Open the input file, create the output file
     input_file = open(filepath, "r")
     output_file_name = os.path.basename(filepath)
-    output_file = open(output + "/" + output_file_name[:-3] + "txt", "w+")
+    output_file = open(output + output_file_name[:-3] + "txt", "w+")
 
     # Common regex patters
     sequence = re.compile(r'^\d+$')
