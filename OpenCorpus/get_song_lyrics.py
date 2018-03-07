@@ -107,11 +107,11 @@ def write_to_file(song, artist, paragraphs, overwrite=False):
         output.write(paragraph)
 
     output.close()
-
     return True
 
 
 def get_all_songs(url):
+    """Gets all the songs from a given page and writes them to output files.""" 
     soup = get_soup(url)
     posts = soup.find_all('div', attrs={'class': 'post'})
 
