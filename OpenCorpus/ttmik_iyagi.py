@@ -54,3 +54,11 @@ def get_transcript_links(soup):
         if english_link_anchor.get_text() != 'English':
             print("WARNING: May be non-English link. Check if source changed.")
     return transcript_links
+
+
+#
+# Getting the transcripts
+#
+def get_transcripts(transcipts):
+    """Given a list of links, download and save all the transcripts."""
+    pass
