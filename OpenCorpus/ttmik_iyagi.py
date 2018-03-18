@@ -62,3 +62,16 @@ def get_transcript_links(soup):
 def get_transcripts(transcipts):
     """Given a list of links, download and save all the transcripts."""
     pass
+
+
+def get_transcript(transcript):
+    """Given a URL to a transcript, download and process it."""
+    soup = get_soup(transcript)
+    title = soup.find('h1', attrs={'id': 'firstHeading'}).get_text()
+    paragraphs = soup.find('div', attrs={'id': 'mw-content-text'}).find_all('p')
+    korean = []; english = [];
+    for paragraph in paragraphs:
+        text = paragraph.get_text().split('\n')
+        korean.append(text[0])
+        english.append(text[1])
+        return korean, english
